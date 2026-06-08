@@ -31,6 +31,12 @@ if pca is None:
     st.error("Dataset tidak ditemukan. Pastikan folder dataset ada di proyek.")
     st.stop()
 
+if st.button("🔄 Retrain Model"):
+    if os.path.exists("model.pkl"):
+        os.remove("model.pkl")
+    st.cache_resource.clear()
+    st.rerun()
+
 orang_list = sorted(set(labels))
 st.success(
     f"Model siap! ({status}) — "
